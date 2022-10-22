@@ -15,5 +15,10 @@ const createUser = async (req, res) => {
     }
 }
 
+const logoutUser = async (req, res) => {
+    res.clearCookie('nToken');
+    return res.redirect('/');
+}
 
-module.exports = { createUser };
+
+module.exports = { createUser, logoutUser };
