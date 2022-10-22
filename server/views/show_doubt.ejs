@@ -18,7 +18,19 @@
                 <div class="card-body">
                   <h5 class="card-title"><%= doubt.title %> </h5>
                   <p class="card-text"><%= doubt.summary %> </p>
-                  <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+
+                  
+                  <!-- Add answers to the question -->
+                  <form action="/doubts/<%= doubt._id %> /answers" method="post">
+                    <textarea class='form-control' name="content" placeholder="Answer"></textarea>
+                    <div class="text-right">
+                      <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                  </form>
+
+                  <% doubt.answers.forEach(answer => { %>
+                   <p><%= answer.content %> </p>
+                  <% }) %>
                 </div>
               </div>
         </div>

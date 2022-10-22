@@ -11,7 +11,7 @@ const createDoubt = (req, res) => {
 
 const getDoubt = async (req, res) => {
     try {
-        const doubt = await Doubt.findById(req.params.id);
+        const doubt = await Doubt.findById(req.params.id).populate('answers');
         return res.render('show_doubt', { doubt });
     } catch(err) {
         console.log(err);

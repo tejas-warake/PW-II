@@ -28,7 +28,7 @@ app.get('/', async (req, res) => {
 })
 
 
-// category listing routes
+// category wise listing routes
 app.get('/r/:category', async (req, res) => {
     const category = req.params.category;
     try {
