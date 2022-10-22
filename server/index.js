@@ -3,12 +3,17 @@ require("./models/db.js");
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require('cookie-parser');
+const checkAuth = require('./middlewares/checkAuth');
 const doubtRoutes = require("./routes/doubtRoutes.js");
 const userRoutes = require("./routes/userRoutes.js");
 const Doubt = require('./models/doubtModel.js');
 
 const app = express();
 app.use(cookieParser());
+
+// check for authenticated users (custom middleware)
+app.use(checkAuth);
+
 
 // middlewares
 app.use(express.json());
@@ -22,9 +27,11 @@ app.use(userRoutes);
 
 // home route
 app.get('/', async (req, res) => {
+    const currentUser = req.user;
+
     try {
         const doubts = await Doubt.find({});
-        return res.render('home', { doubts });
+        return res.render('home', { doubts, currentUser });
     } catch (error) {
         console.log(error);
     }
@@ -33,10 +40,11 @@ app.get('/', async (req, res) => {
 
 // category wise listing routes
 app.get('/r/:category', async (req, res) => {
+    const currentUser = req.user;
     const category = req.params.category;
     try {
         const doubts = await Doubt.find({ category : category });
-        return res.render('home', { doubts });
+        return res.render('home', { doubts, currentUser });
     } catch (error) {
         console.log(error);
     }

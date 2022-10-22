@@ -1,11 +1,15 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
-        <a href="/doubts/new" class="btn btn-primary navbar-btn">New Doubt</a>
-        
+
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="/logout">Logout</a></li>
-            <li><a href="/login">Login</a></li>
-            <li><a href="/sign-up">Sign Up</a></li>
+            <% if (currentUser) { %>
+                <a href="/doubts/new" class="btn btn-primary navbar-btn">New Doubt</a>
+                <li><a href="/logout">Logout</a></li>
+            <% } else { %>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/sign-up">Sign Up</a></li>
+            <% } %>
+
         </ul>
     </div>
   </nav>

@@ -24,6 +24,7 @@ const loginUser = async (req, res) => {
     const { username, password } = req.body;
     try {
         // find this username
+        console.log("Logging in..");
         const user = await User.findOne({ username }, 'username password');
         if (!user) {
             return res.status(401).send({ message: 'Wrong Username or Password' });
@@ -31,11 +32,10 @@ const loginUser = async (req, res) => {
 
         // check the password
         user.comparePassword(password, (err, isMatch) => {
-            if (!isMatch) {
+            if (isMatch) {
                 // Password does not match
                 return res.status(401).send({ message: 'Wrong Username or password' });
             }
-
 
             // Create a token
             const token = jwt.sign({ _id: user._id, username: user.username }, process.env.SECRET, {

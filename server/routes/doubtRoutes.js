@@ -5,7 +5,8 @@ const { addAnswer } = require("../controllers/answersController.js");
 
 
 router.get('/new', (req, res) => {
-    res.render('new_doubt');
+    const currentUser = req.user;
+    res.render('new_doubt', { currentUser });
 })
 
 router.post('/:id/answers', addAnswer);
