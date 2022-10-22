@@ -3,6 +3,7 @@ require("./models/db.js");
 const express = require("express");
 const cors = require("cors");
 const doubtRoutes = require("./routes/doubtRoutes.js");
+const Doubt = require('./models/doubtModel.js');
 
 const app = express();
 
@@ -15,11 +16,16 @@ app.set("view engine", "ejs");
 
 // routes
 app.use('/doubts', doubtRoutes);
-app.get('/', (req, res) => {
-    res.render('home');
+app.get('/', async (req, res) => {
+    try {
+        const doubts = await Doubt.find({});
+        return res.render('home', { doubts });
+    } catch (error) {
+        console.log(error);
+    }
 })
 
 app.listen(process.env.PORT || 4000, () => {
     console.log(`Server is listening at PORT: ${process.env.PORT || 4000}`)
-})
+});
 

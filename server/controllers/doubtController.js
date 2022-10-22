@@ -9,5 +9,14 @@ const createDoubt = (req, res) => {
     })
 }
 
+const getDoubt = async (req, res) => {
+    try {
+        const doubt = await Doubt.findById(req.params.id);
+        return res.render('show_doubt', { doubt });
+    } catch(err) {
+        console.log(err);
+    }
+}
 
-module.exports = { createDoubt };
+
+module.exports = { createDoubt, getDoubt };

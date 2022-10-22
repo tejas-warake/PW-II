@@ -8,9 +8,21 @@
     <title>Home</title>
 </head>
 <body>
-    <h1>This is Home Page</h1>
-   <a href="/doubts/new" class="btn btn-primary navbar-btn">New Doubt</a>
+    <%- include('header'); %> 
 
+   <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <ul>
+        <% doubts.forEach((doubt) => { %> 
+          <li class="list-group-item">
+            <div class="lead"><a href="/doubts/<%= doubt._id %> "><%= doubt.title %> </a></div>
+            <a href="<%= doubt.url %>" target="_blank"><%= doubt.url %> </a>
+          </li>
+        <% }); %> 
+      </ul>
+    </div>
+  </div>
+  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 </html>

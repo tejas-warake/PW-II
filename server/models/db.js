@@ -5,7 +5,7 @@ const url = 'mongodb://localhost/doubt-db';
 mongoose.connect(
   url,
   {
-    useNewUrlParser: true
+    useNewUrlParser: true, useUnifiedTopology: true
   },
   function(err, db) {
     assert.equal(null, err);
