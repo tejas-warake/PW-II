@@ -16,9 +16,23 @@ app.set("view engine", "ejs");
 
 // routes
 app.use('/doubts', doubtRoutes);
+
+// home route
 app.get('/', async (req, res) => {
     try {
         const doubts = await Doubt.find({});
+        return res.render('home', { doubts });
+    } catch (error) {
+        console.log(error);
+    }
+})
+
+
+// category listing routes
+app.get('/r/:category', async (req, res) => {
+    const category = req.params.category;
+    try {
+        const doubts = await Doubt.find({ category : category });
         return res.render('home', { doubts });
     } catch (error) {
         console.log(error);

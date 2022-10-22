@@ -11,8 +11,16 @@
     <%- include('header') %>
     <div class="row">
         <div class="col-sm-6 col-sm-offset-3">
-          <a href="<%= doubt.url %>" class="lead"><%= doubt.title %></a>
-          <p><%= doubt.summary %> </p>
+            <div class="card">
+                <div class="card-header">
+                  <%= doubt.category %> 
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title"><%= doubt.title %> </h5>
+                  <p class="card-text"><%= doubt.summary %> </p>
+                  <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                </div>
+              </div>
         </div>
       </div> 
 
