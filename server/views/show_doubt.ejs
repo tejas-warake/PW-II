@@ -16,6 +16,7 @@
                   <%= doubt.category %> 
                 </div>
                 <div class="card-body">
+                  <h6>Asked by: <%= doubt.author.username %> </h6>
                   <h5 class="card-title"><%= doubt.title %> </h5>
                   <p class="card-text"><%= doubt.summary %> </p>
 
@@ -29,7 +30,7 @@
                   </form>
 
                   <% doubt.answers.forEach(answer => { %>
-                   <p><%= answer.content %> </p>
+                   <p><%= answerCount++ %>: <%= answer.content %> </p>
                   <% }) %>
                 </div>
               </div>

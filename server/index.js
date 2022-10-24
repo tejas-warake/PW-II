@@ -7,6 +7,7 @@ const checkAuth = require('./middlewares/checkAuth');
 const doubtRoutes = require("./routes/doubtRoutes.js");
 const userRoutes = require("./routes/userRoutes.js");
 const Doubt = require('./models/doubtModel.js');
+const User = require("./models/userModel.js");
 
 const app = express();
 app.use(cookieParser());
@@ -30,8 +31,11 @@ app.get('/', async (req, res) => {
     const currentUser = req.user;
 
     try {
-        const doubts = await Doubt.find({});
-        return res.render('home', { doubts, currentUser });
+        const doubts = await Doubt.find({}).populate('author');
+        doubts.reverse();
+        console.log(currentUser);
+        const guest = "Guest";
+        return res.render('home', { doubts, currentUser, guest });
     } catch (error) {
         console.log(error);
     }
@@ -40,10 +44,11 @@ app.get('/', async (req, res) => {
 
 // category wise listing routes
 app.get('/r/:category', async (req, res) => {
+
     const currentUser = req.user;
     const category = req.params.category;
     try {
-        const doubts = await Doubt.find({ category : category });
+        const doubts = await Doubt.find({ category : category }).populate('author');
         return res.render('home', { doubts, currentUser });
     } catch (error) {
         console.log(error);

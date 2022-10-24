@@ -1,14 +1,19 @@
 const { Schema, model } = require('mongoose');
+const Doubt = require("./doubtModel.js");
+const Answer = require("./answerModel.js");
+
 const bcrypt = require("bcrypt");
 
 const userSchema = new Schema({
   username: { type: String, required: true },
   password: { type: String, select: false },
+  doubts: [{ type: Schema.Types.ObjectId, ref: 'Doubt' }],
+  answers: [{ type: Schema.Types.ObjectId, ref: 'Answer' }]
 }, { timestamps: true });
 
 
 userSchema.pre('save', function (next) {
-  // ENCRYPT PASSWORD
+  // ENCRYPT PASSWORD 
   const user = this;
   if (!user.isModified('password')) {
     return next();
@@ -16,7 +21,7 @@ userSchema.pre('save', function (next) {
   bcrypt.genSalt(10, (err, salt) => {
     bcrypt.hash(user.password, salt, (_, hash) => {
       user.password = hash;
-      next();
+      next(); 
     });
   });
 });

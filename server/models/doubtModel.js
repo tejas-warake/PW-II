@@ -6,7 +6,8 @@ const doubtSchema = new Schema({
   url: { type: String, required: true },
   summary: { type: String, required: true },
   category: { type: String, required: true },
-  answers: [{ type: Schema.Types.ObjectId, ref: 'Answer' }]
+  answers: [{ type: Schema.Types.ObjectId, ref: 'Answer' }],
+  author: { type: Schema.Types.ObjectId, ref: 'User', required: true }
 }, { timestamps: true });
 
 
