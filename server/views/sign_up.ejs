@@ -13,21 +13,30 @@
             <h3>Register a new user..</h3>
           <form action="/sign-up" method="post">
             <div class="form-group">
-              <label for="post-title">Enter Username</label>
+              <label for="user-name">Enter Your Name</label>
+              <input
+                type="text"
+                name="name"
+                class="form-control"
+                id="name" required
+              />
+            </div>
+            <div class="form-group">
+              <label for="user-username">Enter Username</label>
               <input
                 type="text"
                 name="username"
                 class="form-control"
-                id="username"
+                id="username" required
               />
             </div>
             <div class="form-group">
-              <label for="post-url">Enter Password</label>
+              <label for="user-password">Enter Password</label>
               <input
                 type="password"
                 name="password"
                 class="form-control"
-                id="password"
+                id="password" required
               />
     
               <button type="submit" class="btn btn-primary">Sign Up</button>

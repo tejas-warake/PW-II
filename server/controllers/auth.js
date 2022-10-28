@@ -7,7 +7,7 @@ const createUser = async (req, res) => {
     try {
         await user.save();
         const token = jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: '60 days' });
-        res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
+        res.cookie('nToken', token, { maxAge: 9000000, httpOnly: true });
         return res.redirect('/');
     } catch (err) {
         console.log(err);

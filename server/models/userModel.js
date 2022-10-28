@@ -5,6 +5,7 @@ const Answer = require("./answerModel.js");
 const bcrypt = require("bcrypt");
 
 const userSchema = new Schema({
+  name: { type: String, required: true },
   username: { type: String, required: true },
   password: { type: String, select: false },
   doubts: [{ type: Schema.Types.ObjectId, ref: 'Doubt' }],
