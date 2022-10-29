@@ -5,39 +5,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <%- include('bootstrapcss') %> 
-    <title>New Doubt</title>
+    <%- include('bootstrapcss.ejs') %>
+    <title>Edit Doubt</title>
 </head>
 
 <body>
-    <%- include('header'); %>
+        <%- include('header') %> 
+        <br>
 
         <div class="row">
             <div class="col-sm-4 col-sm-offset-4">
-                <form action="/doubts/new" method="post">
-                    <legend>New Doubt</legend>
+                <form action="/doubts/edit/<%= doubt._id %>" method="post">
+                    <legend>Edit Doubt</legend>
                     <div class="form-group">
-                        <label for="doubt-title">Title*</label>
+                        <label for="doubt-title">Title</label>
                         <input type="text" name="title" class="form-control" id="doubt-title" placeholder="Title"
-                            required />
+                            value = "<%= doubt.title %>"
+                        required />
                     </div>
                     <div class="form-group">
                         <label for="doubt-url">Url</label>
                         <input type="url" name="url" class="form-control" id="doubt-url"
-                            placeholder="Add any url to related to your doubt..." />
+                            placeholder="Add any url to related to your doubt..." value= "<%= doubt.url %>" />
                     </div>
                     <div class="form-group">
                         <label for="doubt-summary">Doubt in Brief</label>
-                        <textarea name="summary" class="form-control" id="doubt-summary"
-                            placeholder="Doubt in Brief"></textarea>
+                        <textarea name="summary" class="form-control" id="doubt-summary" placeholder="Doubt in Brief"
+                        > <%= doubt.summary %> </textarea>
                     </div>
                     <div class="form-group">
-                        <label for="doubt-category">Add Category*</label>
+                        <label for="doubt-category">Category</label>
                         <input name="category" type="text" class="form-control" id="doubt-category"
-                            placeholder="Category" required>
+                            placeholder="Category" value = "<%= doubt.category %>"
+                        required>
                     </div>
                     <div class="text-right">
-                        <button type="submit" class="btn btn-primary">Ask</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
                     </div>
                 </form>
             </div>

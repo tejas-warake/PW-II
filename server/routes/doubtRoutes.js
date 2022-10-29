@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { createDoubt, getDoubt } = require("../controllers/doubtController.js");
+const { createDoubt, getDoubt, getUpdateDoubt, updateDoubt } = require("../controllers/doubtController.js");
 const { addAnswer } = require("../controllers/answersController.js");
 
 
@@ -9,8 +9,10 @@ router.get('/new', (req, res) => {
     res.render('new_doubt', { currentUser });
 })
 
-router.post('/:id/answers', addAnswer);
-router.post('/new', createDoubt);
-router.get('/:id', getDoubt);
+router.post('/:id/answers', addAnswer);       // adding an answer
+router.post('/new', createDoubt);             // creating a new doubt
+router.get('/:id', getDoubt);                 // view a specific doubt
+router.get('/edit/:id', getUpdateDoubt);      // update page for doubt 
+router.post('/edit/:id', updateDoubt);
 
 module.exports = router;

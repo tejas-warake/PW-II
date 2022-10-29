@@ -1,6 +1,6 @@
 const Doubt = require('../models/doubtModel.js');
 const User = require('../models/userModel.js');
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 
 const createDoubt = async (req, res) => {
     if (req.user) {
@@ -18,17 +18,41 @@ const createDoubt = async (req, res) => {
         res.redirect('/login');
     }
 }
-
+ 
 const getDoubt = async (req, res) => {
     const currentUser = req.user;
     var answerCount = 0;
     try {
-        const doubt = await Doubt.findById(req.params.id).populate('answers').populate('author');
+        const doubt = await Doubt.findById(req.params.id).populate('answers').populate('author'); // populate is used to show author and answers on a doubt
         return res.render('show_doubt', { doubt, currentUser, answerCount });
     } catch(err) {
         console.log(err);
     }
 }
 
+const getUpdateDoubt = async (req, res) => {
+    const currentUser = req.user;
+    const id = req.params.id;
+    try {
+        const doubt = await Doubt.findById(id);
+        console.log(doubt);
+        return res.render('edit_doubt', { currentUser, doubt });
+    } catch (err) {
+        console.log(err);
+    }
+}
 
-module.exports = { createDoubt, getDoubt };
+const updateDoubt = async (req, res) => {
+    const id = req.params.id;
+    const updatedData = req.body;
+
+    try {
+        const updatedDoubt = await Doubt.findByIdAndUpdate(id, updatedData);
+        return res.redirect(`/profile`);
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+
+module.exports = { createDoubt, getDoubt, getUpdateDoubt, updateDoubt };
