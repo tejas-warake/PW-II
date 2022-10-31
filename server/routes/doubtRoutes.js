@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { createDoubt, getDoubt, getUpdateDoubt, updateDoubt } = require("../controllers/doubtController.js");
+const { createDoubt, getDoubt, getUpdateDoubt, updateDoubt, deleteDoubt } = require("../controllers/doubtController.js");
 const { addAnswer } = require("../controllers/answersController.js");
 
 
@@ -14,5 +14,7 @@ router.post('/new', createDoubt);             // creating a new doubt
 router.get('/:id', getDoubt);                 // view a specific doubt
 router.get('/edit/:id', getUpdateDoubt);      // update page for doubt 
 router.post('/edit/:id', updateDoubt);
+router.get('/delete/:id', deleteDoubt);       // delete the doubt
+
 
 module.exports = router;

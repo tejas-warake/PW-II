@@ -54,5 +54,16 @@ const updateDoubt = async (req, res) => {
     }
 }
 
+const deleteDoubt = async (req, res) => {
+    const id = req.params.id;
+    
+    try {
+        const result = await Doubt.findByIdAndRemove(id);          // find the doubt by id and delete it from database
+        return res.redirect(`/profile`);
+    } catch (err) {
+        console.log(err);
+    }
+}
 
-module.exports = { createDoubt, getDoubt, getUpdateDoubt, updateDoubt };
+
+module.exports = { createDoubt, getDoubt, getUpdateDoubt, updateDoubt, deleteDoubt };

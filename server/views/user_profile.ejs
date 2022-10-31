@@ -25,7 +25,8 @@
                         <div class="card">
                             <div class="card-header">
                             <!-- <a href="/r/< doubt.category >" target="_blank" rel="noopener noreferrer">< doubt.category ></a> -->
-                            <a href="/doubts/edit/<%= doubt._id %> ">Edit</a>
+                            <a href="/doubts/edit/<%= doubt._id %> ">Edit</a> <span>|</span>
+                            <a href="/doubts/delete/<%= doubt._id %> ">Delete</a>
                             </div>
                             <div class="card-body">
                               <h5 class="card-title"><%= doubt.title %> </h5>
@@ -34,7 +35,7 @@
                             </div>
                           </div>
                           <br>
-                    <% }); %> 
+                    <% }); %>  
                 </div>
             </div>
         </div>
