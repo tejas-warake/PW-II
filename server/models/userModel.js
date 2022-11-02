@@ -22,7 +22,7 @@ userSchema.pre('save', function (next) {
   bcrypt.genSalt(10, (err, salt) => {
     bcrypt.hash(user.password, salt, (_, hash) => {
       user.password = hash;
-      next(); 
+      next();
     });
   });
 });

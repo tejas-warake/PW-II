@@ -1,38 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <%- include('bootstrapcss') %>   
-    <title>Doubt in brief</title>
+    <%- include('bootstrapcss') %>
+        <title>Doubt in brief</title>
 </head>
+
 <body>
     <%- include('header') %>
-            <div class="card">
+
+        <div class="d-flex justify-content-center mt-3">
+            <div class="card w-50">
                 <div class="card-header">
-                  <%= doubt.category %> 
+                    <%= doubt.category %>
                 </div>
                 <div class="card-body">
-                  <h6>Asked by: <%= doubt.author.username %> </h6>
-                  <h5 class="card-title"><%= doubt.title %> </h5>
-                  <p class="card-text"><%= doubt.summary %> </p>
+                    <h6>Asked by: <%= doubt.author.username %>
+                    </h6>
+                    <h5 class="card-title">
+                        <%= doubt.title %>
+                    </h5>
+                    <p class="card-text">
+                        <%= doubt.summary %>
+                    </p>
+                    <p class="card-text">
+                        <a href="<%= doubt.url %>" target="_blank"><%= doubt.url %></a>
+                    </p>
 
-                  
-                  <!-- Add answers to the question -->
-                  <form action="/doubts/<%= doubt._id %> /answers" method="post">
-                    <textarea class='form-control' name="content" placeholder="Write you answer here..."></textarea>
-                    <div class="text-right">
-                      <button type="submit" class="btn btn-primary">Answer</button>
-                    </div>
-                  </form>
+                    <!-- Add answers to the question -->
+                    <form action="/doubts/<%= doubt._id %> /answers" method="post">
+                        <textarea class='form-control' name="content" placeholder="Write you answer here..."></textarea>
+                        <div class="text-right d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary mt-2">Answer</button>
+                        </div>
+                    </form>
 
-                  <% doubt.answers.forEach(answer => { %>
-                   <p><%= answerCount++ %>: <%= answer.content %> </p>
-                  <% }) %>
+                    <% doubt.answers.forEach(answer=> { %>
+                        <p>
+                            <%= answerCount++ %>: <%= answer.content %>
+                        </p>
+                        <% }) %>
                 </div>
-              </div>
+            </div>
+
+        </div>
 
 
-  </body>
+</body>
+
 </html>

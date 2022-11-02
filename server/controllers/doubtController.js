@@ -17,7 +17,7 @@ const createDoubt = async (req, res) => {
     } else {
         res.redirect('/login');
     }
-}
+} 
  
 const getDoubt = async (req, res) => {
     const currentUser = req.user;

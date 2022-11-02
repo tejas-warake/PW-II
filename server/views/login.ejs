@@ -10,10 +10,9 @@
 </head>
 
 <body>
-    <div class="row">
-        <div class="col-sm-4 col-sm-offset-4">
-            <h3>Log in to an existing account</h3>
-            <form action="/login" method="post">
+    <div class="d-flex align-items-center justify-content-center min-vh-100">
+            <!-- <h3>Log in to an existing account</h3> -->
+            <form action="/login" method="post" class="w-25 p-4 border border-primary rounded">
                 <div class="form-group">
                     <label for="post-title">Enter Username</label>
                     <input type="text" name="username" class="form-control" id="username" />
@@ -22,11 +21,11 @@
                     <label for="post-url">Enter Password</label>
                     <input type="password" name="password" class="form-control" id="password" />
 
-                    <button type="submit" class="btn btn-primary">Log In</button>
+                    <button type="submit" class="btn btn-primary mt-2">Log In</button>
+                    <span>Don't have an account? <a href="/sign-up">Signup</a> </span>
                 </div>
             </form>
         </div>
-    </div>
 
 
 </body>

@@ -49,7 +49,7 @@ app.get('/', async (req, res) => {
     try {
         const doubts = await Doubt.find({}).populate('author');
         doubts.reverse();
-        console.log(currentUser);
+        // console.log(currentUser);
         const guest = "Guest";
         return res.render('home', { doubts, currentUser, guest });
     } catch (error) {

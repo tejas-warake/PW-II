@@ -5,44 +5,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <%- include('bootstrapcss') %> 
-    <title>New Doubt</title>
+    <%- include('bootstrapcss') %>
+        <title>New Doubt</title>
 </head>
 
 <body>
     <%- include('header'); %>
-
-        <div class="row">
-            <div class="col-sm-4 col-sm-offset-4">
-                <form action="/doubts/new" method="post">
-                    <legend>New Doubt</legend>
-                    <div class="form-group">
-                        <label for="doubt-title">Title*</label>
-                        <input type="text" name="title" class="form-control" id="doubt-title" placeholder="Title"
-                            required />
-                    </div>
-                    <div class="form-group">
-                        <label for="doubt-url">Url</label>
-                        <input type="url" name="url" class="form-control" id="doubt-url"
-                            placeholder="Add any url to related to your doubt..." />
-                    </div>
-                    <div class="form-group">
-                        <label for="doubt-summary">Doubt in Brief</label>
-                        <textarea name="summary" class="form-control" id="doubt-summary"
-                            placeholder="Doubt in Brief"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="doubt-category">Add Category*</label>
-                        <input name="category" type="text" class="form-control" id="doubt-category"
-                            placeholder="Category" required>
-                    </div>
-                    <div class="text-right">
-                        <button type="submit" class="btn btn-primary">Ask</button>
-                    </div>
-                </form>
-            </div>
+        <br>
+        <div class="d-flex justify-content-center">
+            <form action="/doubts/new" method="post" class="w-50 p-4 border border-secondary rounded">
+                <legend>New Doubt</legend>
+                <div class="form-group">
+                    <label for="doubt-title">Title*</label>
+                    <input type="text" name="title" class="form-control" id="doubt-title" placeholder="Title"
+                        required />
+                </div>
+                <div class="form-group">
+                    <label for="doubt-url">Url</label>
+                    <input type="url" name="url" class="form-control" id="doubt-url"
+                        placeholder="Add any url to related to your doubt..." />
+                </div>
+                <div class="form-group">
+                    <label for="doubt-summary">Doubt in Brief</label>
+                    <textarea name="summary" class="form-control" id="doubt-summary"
+                        placeholder="Doubt in Brief"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="doubt-category">Add Tag*</label>
+                    <input name="category" type="text" class="form-control" id="doubt-category" placeholder="Tag"
+                        required>
+                </div>
+                <div class="text-right d-flex justify-content-center mt-2">
+                    <button type="submit" class="btn btn-primary">Ask</button>
+                </div>
+            </form>
         </div>
-
 
 </body>
 

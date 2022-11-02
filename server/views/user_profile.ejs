@@ -11,32 +11,34 @@
 
 <body>
     <%- include('header') %>
-    <br>
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-4">
-                    <h4>UserName: <%= user.username %></h4>
+        <br>
+        <div class="container w-100">
+            <div class="text-center w-50 mx-auto">
+                <h3> <u> <%= user.name %> </u> </h3>
+            </div>
+            <div class="container w-50">
+                <h4>Username: <%= user.username %></h4>
+                <h4>Doubts Asked:</h4>
+            </div>
 
-                    <h4>Name: <%= user.name %></h4>
-
-                    <h2>Doubts Asked:</h2>
-
-                    <% doubts.forEach((doubt) => { %> 
-                        <div class="card">
-                            <div class="card-header">
+            <div class="d-flex flex-md-column align-items-center">
+                <% doubts.forEach((doubt)=> { %>
+                    <div class="card w-50">
+                        <div class="card-header">
                             <!-- <a href="/r/< doubt.category >" target="_blank" rel="noopener noreferrer">< doubt.category ></a> -->
                             <a href="/doubts/edit/<%= doubt._id %> ">Edit</a> <span>|</span>
                             <a href="/doubts/delete/<%= doubt._id %> ">Delete</a>
-                            </div>
-                            <div class="card-body">
-                              <h5 class="card-title"><%= doubt.title %> </h5>
-                              <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
-                              <a href="/doubts/<%= doubt._id %>" class="">View..</a>
-                            </div>
-                          </div>
-                          <br>
-                    <% }); %>  
-                </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= doubt.title %>
+                            </h5>
+                            <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                            <a href="/doubts/<%= doubt._id %>" class="">View..</a>
+                        </div>
+                    </div>
+                    <br>
+                    <% }); %>
             </div>
         </div>
 
