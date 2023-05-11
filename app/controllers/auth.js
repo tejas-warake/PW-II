@@ -12,10 +12,10 @@ const checkExistingUser = async (username) => {
 const createUser = async (req, res) => {
     const user = new User(req.body);
 
-    if (checkExistingUser(user.username)) {
-        const errMessage = `Username already exists!`;
-        return res.render('auth_errors_page', { errMessage });
-    }
+    // if (checkExistingUser(user.username)) {
+    //     const errMessage = `Username already exists!`;
+    //     return res.render('auth_errors_page', { errMessage });
+    // }
 
     try {
         await user.save();

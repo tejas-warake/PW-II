@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('bootstrapcss') %>
+    <title>Home</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            background-color: #17a2b8;
+            color: #fff;
+        }
+
+        .card-title a {
+            color: #212529;
+            text-decoration: none;
+        }
+
+        .card-title a:hover {
+            color: #17a2b8;
+        }
+
+        .card-body h6 {
+            margin-bottom: 0;
+        }
+
+        .card-body a {
+            color: #17a2b8;
+            text-decoration: none;
+        }
+
+        .card-body a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('header'); %>
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card-columns">
+                    <!-- Listing all the doubts -->
+                    <% doubts.forEach((doubt)=> { %>
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <a href="/r/<%= doubt.category %>" target="_blank" rel="noopener noreferrer">
+                                <%= doubt.category %>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <h6>Asked By: <%= doubt.author.username %></h6>
+                            <h5 class="card-title"><a href="/doubts/<%= doubt._id %>"><%= doubt.title %></a></h5>
+                            <a href="/doubts/<%= doubt._id %>" class="">View..</a>
+                        </div>
+                    </div>
+                    <% }); %>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

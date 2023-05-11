@@ -8,6 +8,9 @@ const addAnswer = async (req, res) => {
     if (req.user) {                                             // check if user is authenticated or not
         const userId = req.user._id;
         const answer = new Answer(req.body);
+        // console.log(userId);
+        // console.log("Hello");
+        // console.log(answer.author);
         const id = mongoose.Types.ObjectId(req.params.id.trim());   // to remove extra space and converting string to ObjectID type.
         answer.author = userId;
 
